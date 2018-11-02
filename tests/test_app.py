@@ -28,6 +28,12 @@ def test_get_uuid_url(client):
     response = client.get(uuid)
     assert response.status_code == 200
 
+def test_get_inexistent_uuid_url(client):
+  response = client.post('create-pingout')
+  invalid_uuid = '3106a663a8f642b8bd79dac0469bd739'
+  response = client.get(invalid_uuid)
+  assert response.status_code == 404
+
 def test_create_ping_with_valid_UUID(client):
     uuid = create_pingout(client)
     response = client.post(uuid + '/ping')
