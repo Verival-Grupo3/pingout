@@ -266,9 +266,9 @@ Nenhuma
     * Resultados Esperados
         * É esperado que retorne uma resposta de código 404
     * Pós-condições
-		* Não há
+    * Não há
 
-# Caso de Teste 15 -  Criar requisição POST URL filter 
+# Caso de Teste 15 -  Criar requisição POST URL filter
 * Descrição do Caso de Teste
     * Fazer uma requisição POST no  URL /”UUID”/filter
 * Condição de Execução
@@ -292,7 +292,7 @@ Nenhuma
     * Precondições
         * O caso de teste pode ser rodado a qualquer momento, desde que o servidor esteja ligado
     * Inputs de Teste
-	    * Não há
+      * Não há
     * Pontos de Observação
         * Não há
     * Pontos de Controle
@@ -309,7 +309,7 @@ Nenhuma
     * Precondições
         * O caso de teste pode ser rodado a qualquer momento, desde que o servidor esteja ligado
     * Inputs de Teste
-	    * Não há
+      * Não há
     * Pontos de Observação
         * Não há
     * Pontos de Controle
@@ -327,7 +327,7 @@ Nenhuma
     * Precondições
         * O caso de teste pode ser rodado a qualquer momento, desde que o servidor esteja ligado
     * Inputs de Teste
-	    * Não há
+      * Não há
     * Pontos de Observação
         * Não há
     * Pontos de Controle
@@ -339,7 +339,7 @@ Nenhuma
 
 # Caso de Teste 19 -  Filtrar para uma data específica
 * Descrição do Caso de Teste
-	* Verificar se retorna os pings realizados para aquele UUID específico e para uma data específica
+  * Verificar se retorna os pings realizados para aquele UUID específico e para uma data específica
 * Condição de Execução
     * Precondições
         Não há
@@ -354,3 +354,86 @@ Nenhuma
     * Pós-condições
         Não há
 
+# Caso de Teste 20 -  Filtrar para um intervalo de tempo
+
+* Descrição do Caso de Teste
+  * Verificar se retorna os pings realizados para aquele UUID específico e para um período entre as datas inicial e final fornecidas.
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * É esperada uma lista dos pings realizados naquele UUID apenas entre as datas em questão.
+  * Pós-condições
+
+# Caso de Teste 21 -  Validar formato das datas de entrada para o filtro de intervalo de tempo
+
+* Descrição do Caso de Teste
+  * Verificar se a função de filtro de intervalo de tempo lança exceção quando as datas inicial e final não estão no formato esperado (datetime).
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * Que seja lançada a exceção no caso de formato incorreto.
+  * Pós-condições
+
+# Caso de Teste 22 -  Filtrar ocorrências em cada dia para um intervalo de tempo
+
+* Descrição do Caso de Teste
+  * Verificar se retorna os pings realizados a cada dia para aquele UUID específico e para um período entre as datas inicial e final fornecidas.
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * É esperada uma lista dos dias e dos pings realizados a cada dia naquele UUID apenas entre as datas em questão.
+  * Pós-condições
+
+# Caso de Teste 23 -  Validar formato das datas de entrada para o filtro de ocorrências em um intervalo de tempo
+
+* Descrição do Caso de Teste
+  * Verificar se a função de filtro de ocorrências em um intervalo de tempo lança exceção quando as datas inicial e final não estão no formato esperado (datetime).
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * Que seja lançada a exceção no caso de formato incorreto.
+  * Pós-condições
+
+# Caso de Teste 24 -  Validar conexão para a coleção
+
+* Descrição do Caso de Teste
+  * Validar conexão do mongo db e retornar a database principal
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * É esperado que retorne o cliente do pingout.
+  * Pós-condições
+
+# Caso de Teste 25 -  Validar conexão com a database
+
+* Descrição do Caso de Teste
+  * Validar conexão com a coleção principal do app
+* Condição de Execução
+  * Descreve uma condição a ser experimentada durante este teste.
+  * Precondições
+  * Inputs de Teste
+  * Pontos de Observação
+  * Pontos de Controle
+  * Resultados Esperados
+    * É esperado que retorne a história de pings do pingout.
+  * Pós-condições
