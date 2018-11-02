@@ -1,4 +1,5 @@
 import pytest
+from dateutil import parser
 
 @pytest.fixture
 def create_pingout(client):
@@ -41,3 +42,16 @@ def test_get_block_in_ping_url(client):
     uuid = create_pingout(client)
     response = client.get(uuid + '/ping')
     assert response.status_code == 405
+
+def test_filter_with_valid_date(client):
+    uuid = create_pingout(client)
+    client.post(uuid + '/ping')
+    data = client.get('/' + uuid).json
+    pings = data['pingout']['pings']
+    unformatted_date = pings[0]['date']
+    date = parser.parse(unformatted_date)
+
+    initial_date = '-'.join([str(date.year), str(date.month), str(date.day)])
+    final_date = '-'.join([str(date.year), str(date.month), str(date.day)])
+
+    response = client.get(f'/{uuid}/filter/?initial_date={initial_date}&final_date={final_date}').json
