@@ -21,6 +21,13 @@ def test_return_405_on_get_create_pingout(client):
     response = client.get('create-pingout')
     assert response.status_code == 405
 
+
+def test_get_uuid_url(client):
+    response = client.post('create-pingout')
+    uuid = response.json['uuid']
+    response = client.get(uuid)
+    assert response.status_code == 200
+
 def test_create_ping_with_valid_UUID(client):
     uuid = create_pingout(client)
     response = client.post(uuid + '/ping')
