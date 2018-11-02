@@ -36,3 +36,8 @@ def test_create_ping_with_invalid_UUID(client):
     uuid = 'de21ff11e30047ae9698f6bed2529caj'
     response = client.post(uuid + '/ping')
     assert response.status_code == 400
+
+def test_get_block_in_ping_url(client):
+    uuid = create_pingout(client)
+    response = client.get(uuid + '/ping')
+    assert response.status_code == 405
