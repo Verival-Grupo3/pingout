@@ -71,3 +71,14 @@ def test_filter_with_valid_date(client):
     final_date = '-'.join([str(date.year), str(date.month), str(date.day)])
 
     response = client.get(f'/{uuid}/filter/?initial_date={initial_date}&final_date={final_date}').json
+
+def test_filter_with_invalid_UUID_and_valid_date(client):
+    uuid = 'invalidUUID'
+    initial_date = parser.parse('2018-09-24')
+    final_date = parser.parse('2018-09-30')
+
+    response = client.get(f'/{uuid}/filter/?initial_date={initial_date}&final_date={final_date}').json
+    assert response == None
+
+
+
