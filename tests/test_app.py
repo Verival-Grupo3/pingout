@@ -6,11 +6,17 @@ def test_return_200_on_root(client):
 
 # Test route create-pingout for a post
 def test_return_201_on_post_create_pingout(client):
-  response = client.post('create-pingout')
-  assert response.status_code == 201
-  assert response.data != ''
+    response = client.post('create-pingout')
+    assert response.status_code == 201
+    assert response.data != ''
 
 # Test route create-pingout for a get
 def test_return_405_on_get_create_pingout(client):
-  response = client.get('create-pingout')
-  assert response.status_code == 405
+    response = client.get('create-pingout')
+    assert response.status_code == 405
+
+def test_create_ping_with_valid_UUID(client):
+    response = client.post('create-pingout')
+    uuid = response.json['uuid']
+    response = client.post(uuid + '/ping')
+    assert response.status_code == 201
