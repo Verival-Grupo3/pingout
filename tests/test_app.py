@@ -64,6 +64,12 @@ def test_get_block_in_ping_url(client):
     response = client.get(uuid + '/ping')
     assert response.status_code == 405
 
+def test_post_block_in_filter_url(client):
+    uuid = create_pingout(client)
+    ping = client.get(uuid + '/ping')
+    response = client.post(uuid + '/filter')
+    assert response.status_code == 405
+
 def test_filter_with_valid_date(client):
     uuid = create_pingout(client)
     client.post(uuid + '/ping')
