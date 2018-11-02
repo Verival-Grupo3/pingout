@@ -20,3 +20,8 @@ def test_create_ping_with_valid_UUID(client):
     uuid = response.json['uuid']
     response = client.post(uuid + '/ping')
     assert response.status_code == 201
+
+def test_create_ping_with_nonexistent_UUID(client):
+    uuid = "de21ff11e30047ae9698f6bed2529ca4"
+    response = client.post(uuid + '/ping')
+    assert response.status_code == 404
