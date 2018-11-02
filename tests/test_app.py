@@ -98,3 +98,13 @@ def test_filter_with_valid_UUID_and_unformatted_date(client):
 
     response = client.get(f'/{uuid}/filter/?initial_date={initial_date}&final_date={final_date}')
     assert response.status_code == 404    
+
+def test_filter_with_invalid_date_range(client):
+    uuid = create_pingout(client)
+    client.post(uuid + '/ping')
+
+    initial_date = parser.parse('2018-09-24')
+    final_date = parser.parse('2018-09-19')
+
+    response = client.get(f'/{uuid}/filter/?initial_date={initial_date}&final_date={final_date}')
+    assert response.status_code == 404    
